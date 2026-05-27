@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Saved inside: src/main/resources/com/mycompany/projectbuang/admin_dashboard.fxml -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<AnchorPane prefHeight="760.0" prefWidth="1200.0" style="-fx-background-color: #F5F5F7; -fx-font-family: '.AppleSystemUIFont', 'SF Pro', sans-serif;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectbuang.AdminDashboardController">
+   <children>
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefWidth="280.0" style="-fx-background-color: rgba(255,255,255,0.6); -fx-background-radius: 0 16 16 0; -fx-padding: 24 16 24 16;" spacing="16.0">
+               <children>
+                  <VBox spacing="2.0">
+                     <children>
+                        <Label fx:id="lblAdminName" style="-fx-font-weight: 700; -fx-font-size: 15px; -fx-text-fill: #1D1D1F;" text="Admin Operator"/>
+                        <Label fx:id="lblAdminRole" style="-fx-font-size: 11px; -fx-text-fill: #86868B; -fx-text-transform: uppercase;" text="System Administrator"/>
+                     </children>
+                     <VBox.margin><Insets bottom="12.0" left="8.0"/></VBox.margin>
+                  </VBox>
+                  <Label style="-fx-font-size: 11px; -fx-font-weight: 700; -fx-text-fill: #86868B;" text="MONITORED REGISTRY"/>
+                  <ListView fx:id="patientListView" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-background-insets: 0; -fx-padding: 0;"/>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+               <content>
+                  <VBox spacing="24.0" style="-fx-padding: 32;">
+                     <children>
+                         <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                               <VBox HBox.hgrow="ALWAYS">
+                                  <children>
+                                     <Label fx:id="lblPatientName" style="-fx-font-size: 28px; -fx-font-weight: 800; -fx-text-fill: #1D1D1F; -fx-letter-spacing: -0.5px;" text="System Overview"/>
+                                     <Label fx:id="lblPatientMeta" style="-fx-font-size: 13px; -fx-text-fill: #86868B;" text="Select an active tracking node to view diagnostic streams."/>
+                                  </children>
+                               </VBox>
+                               <Button fx:id="btnDeleteAccount" onAction="#handleDeleteAccount" style="-fx-background-color: #FFE6E6; -fx-text-fill: #D32F2F; -fx-background-radius: 8; -fx-padding: 8 16 8 16; -fx-font-weight: 600; -fx-font-size: 13px;" text="Delete Account"/>
+                               <Button onAction="#handleLogout" style="-fx-background-color: #FF3B30; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16 8 16; -fx-font-weight: 600; -fx-font-size: 13px;" text="Log Out"/>
+                            </children>
+                         </HBox>
+                         
+                        <!-- Demographics Card -->
+                        <VBox fx:id="vboxDemographics" spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                           <children>
+                              <Label style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #86868B; -fx-letter-spacing: 0.5px;" text="USER DEMOGRAPHICS &amp; CONTACT INFO" />
+                              <GridPane hgap="24.0" vgap="8.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints minWidth="120.0" prefWidth="150.0" />
+                                    <ColumnConstraints minWidth="120.0" prefWidth="150.0" />
+                                    <ColumnConstraints minWidth="120.0" prefWidth="150.0" />
+                                    <ColumnConstraints hgrow="ALWAYS" />
+                                 </columnConstraints>
+                                 <children>
+                                    <!-- Age -->
+                                    <VBox spacing="2.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label style="-fx-font-size: 11px; -fx-text-fill: #86868B; -fx-font-weight: 600;" text="Age" />
+                                          <Label fx:id="lblAdminAge" style="-fx-font-size: 14px; -fx-text-fill: #1D1D1F; -fx-font-weight: 700;" text="--" />
+                                       </children>
+                                    </VBox>
+                                    <!-- Gender -->
+                                    <VBox spacing="2.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label style="-fx-font-size: 11px; -fx-text-fill: #86868B; -fx-font-weight: 600;" text="Gender" />
+                                          <Label fx:id="lblAdminGender" style="-fx-font-size: 14px; -fx-text-fill: #1D1D1F; -fx-font-weight: 700;" text="--" />
+                                       </children>
+                                    </VBox>
+                                    <!-- Blood Type -->
+                                    <VBox spacing="2.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label style="-fx-font-size: 11px; -fx-text-fill: #86868B; -fx-font-weight: 600;" text="Blood Type" />
+                                          <Label fx:id="lblAdminBloodType" style="-fx-font-size: 14px; -fx-text-fill: #1D1D1F; -fx-font-weight: 700;" text="--" />
+                                       </children>
+                                    </VBox>
+                                    <!-- Phone -->
+                                    <VBox spacing="2.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                       <children>
+                                          <Label style="-fx-font-size: 11px; -fx-text-fill: #86868B; -fx-font-weight: 600;" text="Phone" />
+                                          <Label fx:id="lblAdminPhone" style="-fx-font-size: 14px; -fx-text-fill: #1D1D1F; -fx-font-weight: 700;" text="--" />
+                                       </children>
+                                    </VBox>
+                                    <!-- Email -->
+                                    <VBox spacing="2.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.columnSpan="2">
+                                       <children>
+                                          <Label style="-fx-font-size: 11px; -fx-text-fill: #86868B; -fx-font-weight: 600;" text="Email" />
+                                          <Label fx:id="lblAdminEmail" style="-fx-font-size: 14px; -fx-text-fill: #1D1D1F; -fx-font-weight: 700;" text="--" />
+                                       </children>
+                                    </VBox>
+                                    <!-- Address -->
+                                    <VBox spacing="2.0" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.rowSpan="2">
+                                       <children>
+                                          <Label style="-fx-font-size: 11px; -fx-text-fill: #86868B; -fx-font-weight: 600;" text="Address" />
+                                          <Label fx:id="lblAdminAddress" style="-fx-font-size: 14px; -fx-text-fill: #1D1D1F; -fx-font-weight: 700;" text="--" wrapText="true" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                 </rowConstraints>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                        
+                          <HBox fx:id="hboxTelemetry" spacing="16.0">
+                             <children>
+                                <VBox onMouseClicked="#handleOpenHeartDetails" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;">
+                                   <children>
+                                      <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px; -fx-font-weight: 700;" text="HEART RATE"/>
+                                      <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                         <children>
+                                            <Label fx:id="lblHeartRate" style="-fx-font-size: 36px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="--"/>
+                                            <Label style="-fx-text-fill: #86868B; -fx-font-size: 13px;" text="BPM"/>
+                                         </children>
+                                      </HBox>
+                                   </children>
+                                </VBox>
+                                <VBox onMouseClicked="#handleOpenStayFitPlan" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;">
+                                   <children>
+                                      <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px; -fx-font-weight: 700;" text="TEMPERATURE"/>
+                                      <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                         <children>
+                                            <Label fx:id="lblTemperature" style="-fx-font-size: 36px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="--"/>
+                                            <Label style="-fx-text-fill: #86868B; -fx-font-size: 13px;" text="°C"/>
+                                         </children>
+                                      </HBox>
+                                   </children>
+                                </VBox>
+                                <VBox onMouseClicked="#handleOpenOxygenDetails" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;">
+                                   <children>
+                                      <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px; -fx-font-weight: 700;" text="OXYGEN MATRIX"/>
+                                      <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                         <children>
+                                            <Label fx:id="lblOxygen" style="-fx-font-size: 36px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="--"/>
+                                            <Label style="-fx-text-fill: #86868B; -fx-font-size: 13px;" text="\%"/>
+                                         </children>
+                                      </HBox>
+                                   </children>
+                                </VBox>
+                                <VBox onMouseClicked="#handleOpenConditionDetails" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;">
+                                   <children>
+                                      <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px; -fx-font-weight: 700;" text="CURRENT CONDITION"/>
+                                      <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                         <children>
+                                            <Label fx:id="lblAdminCondition" style="-fx-font-size: 24px; -fx-font-weight: 700; -fx-text-fill: #34C759;" text="--"/>
+                                         </children>
+                                      </HBox>
+                                   </children>
+                                </VBox>
+                             </children>
+                          </HBox>
+                          
+                          <HBox fx:id="hboxTelemetry2" spacing="16.0">
+                             <children>
+                                <VBox onMouseClicked="#handleOpenActivityDetails" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;">
+                                   <children>
+                                      <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px; -fx-font-weight: 700;" text="ACTIVITY &amp; STEPS"/>
+                                      <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                         <children>
+                                            <Label fx:id="lblAdminActivity" style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="--"/>
+                                         </children>
+                                      </HBox>
+                                   </children>
+                                </VBox>
+                                <VBox onMouseClicked="#handleOpenWeightDetails" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;">
+                                   <children>
+                                      <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px; -fx-font-weight: 700;" text="WEIGHT &amp; BMI"/>
+                                      <HBox alignment="BASELINE_LEFT" spacing="6.0">
+                                         <children>
+                                            <Label fx:id="lblAdminWeight" style="-fx-font-size: 24px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="--"/>
+                                            <Label fx:id="lblAdminBMI" style="-fx-text-fill: #86868B; -fx-font-size: 12px; -fx-font-weight: 600;" text="--"/>
+                                         </children>
+                                      </HBox>
+                                   </children>
+                                </VBox>
+                                <VBox onMouseClicked="#handleOpenSleepDetails" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;">
+                                   <children>
+                                      <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px; -fx-font-weight: 700;" text="SLEEP RECORD"/>
+                                      <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                         <children>
+                                            <Label fx:id="lblAdminSleep" style="-fx-font-size: 24px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="--"/>
+                                         </children>
+                                      </HBox>
+                                   </children>
+                                </VBox>
+                                <VBox onMouseClicked="#handleOpenStayFitPlan" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;">
+                                   <children>
+                                      <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px; -fx-font-weight: 700;" text="STAY FIT PLAN"/>
+                                      <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                         <children>
+                                            <Label style="-fx-font-size: 20px; -fx-font-weight: 700; -fx-text-fill: #0071E3;" text="Plan Info"/>
+                                         </children>
+                                      </HBox>
+                                   </children>
+                                </VBox>
+                             </children>
+                          </HBox>
+                         
+                         <VBox fx:id="vboxNotesLogCard" spacing="14.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 12, 0, 0, 4);">
+                            <children>
+                               <Label style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="Data Entry &amp; System Observations"/>
+                               <ScrollPane fitToWidth="true" prefHeight="150.0" style="-fx-background-color: transparent;">
+                                  <content>
+                                     <VBox fx:id="vboxNotesContainer" spacing="8.0"/>
+                                  </content>
+                               </ScrollPane>
+                               <HBox spacing="12.0" alignment="CENTER_LEFT">
+                                  <children>
+                                     <TextArea fx:id="txtNewNoteInput" HBox.hgrow="ALWAYS" prefHeight="40.0" promptText="Append official system override notation records..." style="-fx-background-radius: 8; -fx-font-size: 13px;" wrapText="true"/>
+                                     <Button onAction="#handleAddNewNote" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0071E3; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: 600;" text="Add Note"/>
+                                  </children>
+                               </HBox>
+                            </children>
+                         </VBox>
+
+                         <!-- System Analytics Card -->
+                         <VBox fx:id="vboxAnalytics" spacing="20.0" visible="false" managed="false">
+                            <children>
+                               <!-- Analytics Metric Cards -->
+                               <GridPane hgap="16.0" vgap="16.0">
+                                  <columnConstraints>
+                                     <ColumnConstraints percentWidth="25.0" hgrow="ALWAYS" />
+                                     <ColumnConstraints percentWidth="25.0" hgrow="ALWAYS" />
+                                     <ColumnConstraints percentWidth="25.0" hgrow="ALWAYS" />
+                                     <ColumnConstraints percentWidth="25.0" hgrow="ALWAYS" />
+                                  </columnConstraints>
+                                  <children>
+                                     <!-- Metric 1: Total Users -->
+                                     <VBox style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                        <children>
+                                           <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px; -fx-font-weight: 700;" text="TOTAL USERS" />
+                                           <Label fx:id="lblTotalPatients" style="-fx-font-size: 28px; -fx-font-weight: 800; -fx-text-fill: #0071E3;" text="0" />
+                                        </children>
+                                     </VBox>
+                                     <!-- Metric 2: Alert Patients -->
+                                     <VBox style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                        <children>
+                                           <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px; -fx-font-weight: 700;" text="ACTIVE ALERTS" />
+                                           <Label fx:id="lblActiveAlerts" style="-fx-font-size: 28px; -fx-font-weight: 800; -fx-text-fill: #FF3B30;" text="0" />
+                                        </children>
+                                     </VBox>
+                                     <!-- Metric 3: Total Logs -->
+                                     <VBox style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                                        <children>
+                                           <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px; -fx-font-weight: 700;" text="TOTAL LOGS" />
+                                           <Label fx:id="lblTotalLogs" style="-fx-font-size: 28px; -fx-font-weight: 800; -fx-text-fill: #FF9500;" text="0" />
+                                        </children>
+                                     </VBox>
+                                     <!-- Metric 4: Avg Heart Rate -->
+                                     <VBox style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                                        <children>
+                                           <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px; -fx-font-weight: 700;" text="AVG HEART RATE" />
+                                           <Label fx:id="lblAvgHeartRate" style="-fx-font-size: 28px; -fx-font-weight: 800; -fx-text-fill: #34C759;" text="0" />
+                                        </children>
+                                     </VBox>
+                                  </children>
+                                  <rowConstraints>
+                                     <RowConstraints />
+                                  </rowConstraints>
+                               </GridPane>
+                               
+                               <!-- Symptom/Condition Distribution -->
+                               <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                                  <children>
+                                     <Label style="-fx-font-size: 13px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="Symptom Distribution" />
+                                     <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;" minHeight="100.0" maxHeight="150.0">
+                                        <content>
+                                           <VBox fx:id="vboxSymptomStats" spacing="8.0" />
+                                        </content>
+                                     </ScrollPane>
+                                  </children>
+                               </VBox>
+                               
+                               <!-- User Activities Log -->
+                               <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                                  <children>
+                                     <Label style="-fx-font-size: 13px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="Recent User Activities Log" />
+                                     <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;" minHeight="180.0">
+                                        <content>
+                                           <VBox fx:id="vboxActivitiesLog" spacing="8.0" />
+                                        </content>
+                                     </ScrollPane>
+                                  </children>
+                               </VBox>
+                            </children>
+                         </VBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

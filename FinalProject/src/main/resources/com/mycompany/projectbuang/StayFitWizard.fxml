@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Saved inside: src/main/resources/com/mycompany/projectbuang/StayFitWizard.fxml -->
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="700.0" prefWidth="880.0" style="-fx-background-color: #F5F5F7; -fx-font-family: '.AppleSystemUIFont', 'SF Pro', sans-serif;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectbuang.StayFitWizardController">
+   <children>
+      <StackPane fx:id="stackWizard" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            
+            <!-- Page 1: Body Information -->
+            <VBox fx:id="paneStep1" spacing="20.0" style="-fx-padding: 24;">
+               <children>
+                  <!-- Top Header Navigation -->
+                  <HBox alignment="CENTER_LEFT" spacing="12.0">
+                     <children>
+                        <Button onAction="#handleClose" style="-fx-background-color: #E5E5EA; -fx-text-fill: #1D1D1F; -fx-background-radius: 20; -fx-min-width: 40px; -fx-min-height: 40px; -fx-font-size: 16px; -fx-font-weight: bold; -fx-cursor: hand;" text="‹" />
+                        <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 20px; -fx-font-weight: 700;" text="Stay Fit Plan" />
+                        <HBox HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 12px; -fx-font-weight: 700; -fx-letter-spacing: 0.5px;" text="STAY FIT PLAN" />
+                        <HBox alignment="CENTER_LEFT" spacing="6.0">
+                           <children>
+                              <Label style="-fx-text-fill: #FF9500; -fx-font-size: 12px; -fx-font-weight: 700;" text="1. Body Information" />
+                           </children>
+                        </HBox>
+                        <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 24px; -fx-font-weight: 800; -fx-letter-spacing: -0.5px;" text="Confirm your information" />
+                     </children>
+                  </VBox>
+
+                  <!-- Page 1 Split Content -->
+                  <HBox alignment="TOP_LEFT" spacing="16.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        
+                        <!-- Left Column: Inputs -->
+                        <VBox spacing="14.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <!-- Height Card -->
+                              <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT">
+                                       <children>
+                                          <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 13px; -fx-font-weight: 600;" text="Height" />
+                                          <HBox HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="lblHeightVal" style="-fx-text-fill: #1D1D1F; -fx-font-size: 18px; -fx-font-weight: 800;" text="160 cm" />
+                                       </children>
+                                    </HBox>
+                                    <Slider fx:id="sliderHeight" max="220.0" min="100.0" value="160.0" />
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Weight Card -->
+                              <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT">
+                                       <children>
+                                          <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 13px; -fx-font-weight: 600;" text="Weight" />
+                                          <HBox HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="lblWeightVal" style="-fx-text-fill: #1D1D1F; -fx-font-size: 18px; -fx-font-weight: 800;" text="60 kg" />
+                                       </children>
+                                    </HBox>
+                                    <Slider fx:id="sliderWeight" max="150.0" min="30.0" value="60.0" />
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Shape & Experience Row -->
+                              <HBox spacing="14.0">
+                                 <children>
+                                    <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 11px; -fx-font-weight: 700; -fx-letter-spacing: 0.5px;" text="BODY SHAPE" />
+                                          <ComboBox fx:id="comboBodyShape" maxWidth="Infinity" style="-fx-background-color: #EEEEF0; -fx-text-fill: #1D1D1F; -fx-background-radius: 10; -fx-padding: 6 8;" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 11px; -fx-font-weight: 700; -fx-letter-spacing: 0.5px;" text="ATHLETIC EXPERIENCE" />
+                                          <ComboBox fx:id="comboExperience" maxWidth="Infinity" style="-fx-background-color: #EEEEF0; -fx-text-fill: #1D1D1F; -fx-background-radius: 10; -fx-padding: 6 8;" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        
+                        <!-- Right Column: BMI and navigation -->
+                        <VBox prefWidth="340.0" spacing="14.0">
+                           <children>
+                              <!-- BMI Gauge Card -->
+                              <VBox spacing="14.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                                 <children>
+                                    <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 13px; -fx-font-weight: 600;" text="Current BMI" />
+                                    <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                       <children>
+                                          <Label fx:id="lblBMIResultVal" style="-fx-text-fill: #1D1D1F; -fx-font-size: 26px; -fx-font-weight: 800;" text="23.4" />
+                                          <Label fx:id="lblBMICategoryBadge" style="-fx-text-fill: #34C759; -fx-font-size: 12px; -fx-font-weight: 700; -fx-padding: 0 0 0 6;" text="Normal" />
+                                       </children>
+                                    </HBox>
+                                    
+                                    <!-- Scale Bar -->
+                                    <AnchorPane prefHeight="10.0">
+                                       <children>
+                                          <HBox alignment="CENTER" spacing="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Pane prefHeight="6.0" style="-fx-background-color: #0A84FF; -fx-background-radius: 3;" HBox.hgrow="ALWAYS" />
+                                                <Pane prefHeight="6.0" style="-fx-background-color: #34C759; -fx-background-radius: 3;" HBox.hgrow="ALWAYS" />
+                                                <Pane prefHeight="6.0" style="-fx-background-color: #FF9500; -fx-background-radius: 3;" HBox.hgrow="ALWAYS" />
+                                                <Pane prefHeight="6.0" style="-fx-background-color: #FF3B30; -fx-background-radius: 3;" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <Circle fx:id="circleBMIMarker" fill="#1D1D1F" layoutX="120.0" layoutY="3.0" radius="6.0" stroke="white" strokeWidth="2.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              
+                              <HBox VBox.vgrow="ALWAYS" />
+                              <Button fx:id="btnStep1Next" maxWidth="Infinity" onAction="#handleStep1Next" prefHeight="50.0" style="-fx-background-color: #FF9500; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: 700; -fx-font-size: 14px; -fx-cursor: hand;" text="NEXT" />
+                           </children>
+                        </VBox>
+
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <!-- Page 2: Goal -->
+            <VBox fx:id="paneStep2" spacing="20.0" style="-fx-padding: 24;" visible="false">
+               <children>
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 12px; -fx-font-weight: 700; -fx-letter-spacing: 0.5px;" text="STAY FIT PLAN" />
+                        <HBox alignment="CENTER_LEFT" spacing="6.0">
+                           <children>
+                              <Label style="-fx-text-fill: #FF9500; -fx-font-size: 12px; -fx-font-weight: 700;" text="2. Goal" />
+                           </children>
+                        </HBox>
+                        <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 24px; -fx-font-weight: 800; -fx-letter-spacing: -0.5px;" text="Weight goal" />
+                     </children>
+                  </VBox>
+
+                  <!-- Page 2 Split Content -->
+                  <HBox alignment="TOP_LEFT" spacing="16.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <!-- Left Column: Loss Rate -->
+                        <VBox spacing="14.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <!-- Loss Rate Card -->
+                              <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                                 <children>
+                                    <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 13px; -fx-font-weight: 600;" text="Weight loss rate" />
+                                    <Label fx:id="lblRateVal" style="-fx-text-fill: #FF9500; -fx-font-size: 15px; -fx-font-weight: 700;" text="Recommended: Lose 0.4 kg every week" />
+                                    <Slider fx:id="sliderRate" max="1.0" min="0.1" value="0.4" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+
+                        <!-- Right Column: Goal Weight and buttons -->
+                        <VBox prefWidth="340.0" spacing="14.0">
+                           <children>
+                              <!-- Goal Weight Card -->
+                              <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT">
+                                       <children>
+                                          <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 13px; -fx-font-weight: 600;" text="Goal" />
+                                          <HBox HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="lblGoalWeightVal" style="-fx-text-fill: #1D1D1F; -fx-font-size: 18px; -fx-font-weight: 800;" text="58.5 kg" />
+                                       </children>
+                                    </HBox>
+                                    <Slider fx:id="sliderGoalWeight" max="120.0" min="40.0" value="58.5" />
+                                 </children>
+                              </VBox>
+
+                              <HBox VBox.vgrow="ALWAYS" />
+                              
+                              <HBox spacing="12.0">
+                                 <children>
+                                    <Button onAction="#handleBackTo1" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #E5E5EA; -fx-text-fill: #1D1D1F; -fx-background-radius: 12; -fx-font-weight: 700; -fx-cursor: hand;" text="BACK" />
+                                    <Button maxWidth="Infinity" onAction="#handleStep2Next" prefHeight="48.0" style="-fx-background-color: #FF9500; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: 700; -fx-cursor: hand;" text="NEXT" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <!-- Page 3: Focus Areas -->
+            <VBox fx:id="paneStep3" spacing="20.0" style="-fx-padding: 24;" visible="false">
+               <children>
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 12px; -fx-font-weight: 700; -fx-letter-spacing: 0.5px;" text="STAY FIT PLAN" />
+                        <HBox alignment="CENTER_LEFT" spacing="6.0">
+                           <children>
+                              <Label style="-fx-text-fill: #FF9500; -fx-font-size: 12px; -fx-font-weight: 700;" text="3. Goal" />
+                           </children>
+                        </HBox>
+                        <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 24px; -fx-font-weight: 800; -fx-letter-spacing: -0.5px;" text="Focus areas" />
+                     </children>
+                  </VBox>
+                  
+                  <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                     <children>
+                        <!-- Grid of Focus Areas (Spanned beautifully) -->
+                        <GridPane hgap="12.0" prefWidth="600.0" vgap="12.0">
+                           <columnConstraints>
+                              <javafx.scene.layout.ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                              <javafx.scene.layout.ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                           </columnConstraints>
+                           <children>
+                              <Button fx:id="btnFocusAbs" maxWidth="Infinity" onAction="#handleToggleAbs" prefHeight="65.0" style="-fx-background-color: #EEEEF0; -fx-text-fill: #1D1D1F; -fx-background-radius: 12; -fx-font-weight: 600; -fx-cursor: hand;" text="Abs ⚪" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                              <Button fx:id="btnFocusLegs" maxWidth="Infinity" onAction="#handleToggleLegs" prefHeight="65.0" style="-fx-background-color: #EEEEF0; -fx-text-fill: #1D1D1F; -fx-background-radius: 12; -fx-font-weight: 600; -fx-cursor: hand;" text="Legs ⚪" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              <Button fx:id="btnFocusGlutes" maxWidth="Infinity" onAction="#handleToggleGlutes" prefHeight="65.0" style="-fx-background-color: #EEEEF0; -fx-text-fill: #1D1D1F; -fx-background-radius: 12; -fx-font-weight: 600; -fx-cursor: hand;" text="Glutes ⚪" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                              <Button fx:id="btnFocusArms" maxWidth="Infinity" onAction="#handleToggleArms" prefHeight="65.0" style="-fx-background-color: #EEEEF0; -fx-text-fill: #1D1D1F; -fx-background-radius: 12; -fx-font-weight: 600; -fx-cursor: hand;" text="Arms ⚪" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button fx:id="btnFocusBack" maxWidth="Infinity" onAction="#handleToggleBack" prefHeight="65.0" style="-fx-background-color: #EEEEF0; -fx-text-fill: #1D1D1F; -fx-background-radius: 12; -fx-font-weight: 600; -fx-cursor: hand;" text="Back ⚪" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                              <Button fx:id="btnFocusChest" maxWidth="Infinity" onAction="#handleToggleChest" prefHeight="65.0" style="-fx-background-color: #EEEEF0; -fx-text-fill: #1D1D1F; -fx-background-radius: 12; -fx-font-weight: 600; -fx-cursor: hand;" text="Chest ⚪" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button fx:id="btnFocusWholeBody" maxWidth="Infinity" onAction="#handleToggleWholeBody" prefHeight="65.0" style="-fx-background-color: #FF9500; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: 600; -fx-cursor: hand;" text="Whole body 🟠" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                           </children>
+                           <rowConstraints>
+                              <javafx.scene.layout.RowConstraints />
+                              <javafx.scene.layout.RowConstraints />
+                              <javafx.scene.layout.RowConstraints />
+                              <javafx.scene.layout.RowConstraints />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </HBox>
+                  
+                  <HBox spacing="12.0">
+                     <children>
+                        <Button onAction="#handleBackTo2" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #E5E5EA; -fx-text-fill: #1D1D1F; -fx-background-radius: 12; -fx-font-weight: 700; -fx-cursor: hand;" text="BACK" />
+                        <Button maxWidth="Infinity" onAction="#handleStep3Next" prefHeight="48.0" style="-fx-background-color: #FF9500; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: 700; -fx-cursor: hand;" text="NEXT" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <!-- Page 4: Fitness Schedule -->
+            <VBox fx:id="paneStep4" spacing="20.0" style="-fx-padding: 24;" visible="false">
+               <children>
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 12px; -fx-font-weight: 700; -fx-letter-spacing: 0.5px;" text="STAY FIT PLAN" />
+                        <HBox alignment="CENTER_LEFT" spacing="6.0">
+                           <children>
+                              <Label style="-fx-text-fill: #FF9500; -fx-font-size: 12px; -fx-font-weight: 700;" text="4. Fitness Schedule" />
+                           </children>
+                        </HBox>
+                        <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 24px; -fx-font-weight: 800; -fx-letter-spacing: -0.5px;" text="Fitness plan" />
+                     </children>
+                  </VBox>
+
+                  <!-- Page 4 Split Content -->
+                  <HBox alignment="TOP_LEFT" spacing="16.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <!-- Left Column: Days selector -->
+                        <VBox spacing="14.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <!-- Training Days Selector -->
+                              <VBox spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                                 <children>
+                                    <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 13px; -fx-font-weight: 600;" text="Training Days" />
+                                    <HBox alignment="CENTER" spacing="6.0">
+                                       <children>
+                                          <Button fx:id="btnMon" onAction="#handleToggleMon" style="-fx-background-color: #FF9500; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 11px; -fx-cursor: hand; -fx-min-width: 52px; -fx-min-height: 38px;" text="Mon" />
+                                          <Button fx:id="btnTue" onAction="#handleToggleTue" style="-fx-background-color: #EEEEF0; -fx-text-fill: #1D1D1F; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 11px; -fx-cursor: hand; -fx-min-width: 52px; -fx-min-height: 38px;" text="Tue" />
+                                          <Button fx:id="btnWed" onAction="#handleToggleWed" style="-fx-background-color: #FF9500; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 11px; -fx-cursor: hand; -fx-min-width: 52px; -fx-min-height: 38px;" text="Wed" />
+                                          <Button fx:id="btnThu" onAction="#handleToggleThu" style="-fx-background-color: #FF9500; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 11px; -fx-cursor: hand; -fx-min-width: 52px; -fx-min-height: 38px;" text="Thu" />
+                                          <Button fx:id="btnFri" onAction="#handleToggleFri" style="-fx-background-color: #EEEEF0; -fx-text-fill: #1D1D1F; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 11px; -fx-cursor: hand; -fx-min-width: 52px; -fx-min-height: 38px;" text="Fri" />
+                                          <Button fx:id="btnSat" onAction="#handleToggleSat" style="-fx-background-color: #FF9500; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 11px; -fx-cursor: hand; -fx-min-width: 52px; -fx-min-height: 38px;" text="Sat" />
+                                          <Button fx:id="btnSun" onAction="#handleToggleSun" style="-fx-background-color: #EEEEF0; -fx-text-fill: #1D1D1F; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 11px; -fx-cursor: hand; -fx-min-width: 52px; -fx-min-height: 38px;" text="Sun" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+
+                        <!-- Right Column: Reminders -->
+                        <VBox prefWidth="340.0" spacing="14.0">
+                           <children>
+                              <!-- Reminders Card -->
+                              <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                                 <children>
+                                    <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 13px; -fx-font-weight: 600;" text="Training Day Reminders" />
+                                    <ComboBox fx:id="comboReminderTime" maxWidth="Infinity" style="-fx-background-color: #EEEEF0; -fx-text-fill: #1D1D1F; -fx-background-radius: 10; -fx-padding: 6 8;" />
+                                 </children>
+                              </VBox>
+
+                              <HBox VBox.vgrow="ALWAYS" />
+                              
+                              <HBox spacing="12.0">
+                                 <children>
+                                    <Button onAction="#handleBackTo3" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #E5E5EA; -fx-text-fill: #1D1D1F; -fx-background-radius: 12; -fx-font-weight: 700; -fx-cursor: hand;" text="BACK" />
+                                    <Button maxWidth="Infinity" onAction="#handleStep4Next" prefHeight="48.0" style="-fx-background-color: #FF9500; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: 700; -fx-cursor: hand;" text="GENERATE" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <!-- Page 5: Summary Result Plan -->
+            <VBox fx:id="paneStep5" spacing="18.0" style="-fx-padding: 24;" visible="false">
+               <children>
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label style="-fx-text-fill: #FF9500; -fx-font-size: 12px; -fx-font-weight: 700; -fx-letter-spacing: 0.5px;" text="PREPARED JUST FOR YOU" />
+                        <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 26px; -fx-font-weight: 800; -fx-letter-spacing: -0.5px;" text="Stay Fit Plan" />
+                        <Label fx:id="lblPlanCreationDate" style="-fx-text-fill: #8E8E93; -fx-font-size: 12px;" text="Created on 25 May 2026" />
+                     </children>
+                  </VBox>
+
+                  <!-- Page 5 Split Content -->
+                  <HBox alignment="TOP_LEFT" spacing="16.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <!-- Left Column: Trend curve -->
+                        <VBox spacing="12.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <!-- Chart Visualizer -->
+                              <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 14; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                                 <children>
+                                    <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 13px; -fx-font-weight: 700;" text="Estimated Trend Curve" />
+                                    <LineChart fx:id="chartTrend" alternativeRowFillVisible="false" animated="false" createSymbols="true" horizontalGridLinesVisible="true" legendVisible="false" prefHeight="320.0" verticalGridLinesVisible="false">
+                                       <xAxis><CategoryAxis animated="false" label="Weeks Ahead" side="BOTTOM" style="-fx-tick-label-fill: #1D1D1F; -fx-font-size: 11px; -fx-font-weight: bold;" tickLabelFill="#1D1D1F" /></xAxis>
+                                       <yAxis><NumberAxis animated="false" forceZeroInRange="false" label="Weight (kg)" side="LEFT" style="-fx-tick-label-fill: #1D1D1F; -fx-font-size: 11px; -fx-font-weight: bold;" tickLabelFill="#1D1D1F" /></yAxis>
+                                    </LineChart>
+                                    
+                                    <VBox fx:id="vboxScaleDetails" spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 14; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                                       <children>
+                                          <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 0 0 4 0;" text="Projected Trend Weight Details" />
+                                          <VBox fx:id="vboxScaleDetailsList" spacing="8.0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+
+                        <!-- Right Column: Stats and Action -->
+                        <VBox prefWidth="340.0" spacing="12.0">
+                           <children>
+                              <!-- Goal Summary Metrics -->
+                              <HBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                                 <children>
+                                    <VBox alignment="CENTER" spacing="4.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label fx:id="lblSummaryLoss" style="-fx-text-fill: #1D1D1F; -fx-font-size: 20px; -fx-font-weight: 800;" text="1.5 kg" />
+                                          <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 11px;" text="Weight loss" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefWidth="1.0" style="-fx-background-color: #EEEEF0;" />
+                                    <VBox alignment="CENTER" spacing="4.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label fx:id="lblSummaryDays" style="-fx-text-fill: #1D1D1F; -fx-font-size: 20px; -fx-font-weight: 800;" text="28 days" />
+                                          <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 11px;" text="Duration" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              
+                              <!-- Today's Workout Card -->
+                              <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT">
+                                       <children>
+                                          <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 12px; -fx-font-weight: 700;" text="TODAY'S WORKOUT" />
+                                          <HBox HBox.hgrow="ALWAYS" />
+                                          <Label style="-fx-text-fill: #FF9500; -fx-font-size: 15px; -fx-font-weight: 800;" text="122 kcal" />
+                                       </children>
+                                    </HBox>
+                                    <VBox spacing="2.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 15px; -fx-font-weight: 700;" text="Whole body / Abs &amp; Glutes" />
+                                          <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 12px;" text="Difficulty: L1 Beginner" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+
+                              <HBox VBox.vgrow="ALWAYS" />
+
+                              <HBox spacing="12.0">
+                                 <children>
+                                    <Button onAction="#handleBackTo4" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #E5E5EA; -fx-text-fill: #1D1D1F; -fx-background-radius: 12; -fx-font-weight: 700; -fx-cursor: hand;" text="BACK" />
+                                    <Button maxWidth="Infinity" onAction="#handleFinishWizard" prefHeight="48.0" style="-fx-background-color: #30D158; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: 700; -fx-cursor: hand;" text="SAVE &amp; ACTIVATE" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

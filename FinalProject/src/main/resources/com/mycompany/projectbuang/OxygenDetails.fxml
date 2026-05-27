@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Saved inside: src/main/resources/com/mycompany/projectbuang/OxygenDetails.fxml -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="760.0" prefWidth="880.0" style="-fx-background-color: #F5F5F7; -fx-font-family: '.AppleSystemUIFont', 'SF Pro', sans-serif;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectbuang.OxygenDetailsController">
+   <children>
+      <VBox spacing="16.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="16.0" left="20.0" right="20.0" top="16.0" />
+         </padding>
+         <children>
+            <!-- Top Header Navigation -->
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+               <children>
+                  <Button onAction="#handleClose" style="-fx-background-color: #E5E5EA; -fx-text-fill: #1D1D1F; -fx-background-radius: 20; -fx-min-width: 40px; -fx-min-height: 40px; -fx-font-size: 16px; -fx-font-weight: bold; -fx-cursor: hand;" text="‹" />
+                  <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 20px; -fx-font-weight: 700;" text="Blood Oxygen" />
+                  <HBox HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+               <content>
+                  <HBox alignment="TOP_LEFT" spacing="16.0" style="-fx-background-color: transparent;">
+                     <children>
+                        
+                        <!-- Left Column: Line Chart and range info -->
+                        <VBox spacing="12.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox spacing="14.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 8, 0, 0, 2);">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: #0071E3; -fx-font-weight: 700; -fx-font-size: 13px;" text="OXYGEN HISTORY" />
+                                          <HBox HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+
+                                    <!-- Saturation Range -->
+                                    <VBox spacing="2.0">
+                                       <children>
+                                          <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                             <children>
+                                                <Label fx:id="lblOxygenRange" style="-fx-text-fill: #1D1D1F; -fx-font-size: 32px; -fx-font-weight: 800; -fx-letter-spacing: -0.5px;" text="95-99%" />
+                                             </children>
+                                          </HBox>
+                                          <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 12px;" text="Normal range is typically 95-100%" />
+                                       </children>
+                                    </VBox>
+
+                                    <!-- Native Chart Area -->
+                                    <LineChart fx:id="chartOxygen" alternativeRowFillVisible="false" createSymbols="true" horizontalGridLinesVisible="true" legendVisible="false" prefHeight="340.0" verticalGridLinesVisible="false">
+                                       <xAxis><CategoryAxis label="Time of Day" side="BOTTOM" style="-fx-tick-label-fill: #1D1D1F; -fx-font-size: 11px; -fx-font-weight: bold;" tickLabelFill="#1D1D1F" /></xAxis>
+                                       <yAxis><NumberAxis forceZeroInRange="false" label="SpO2 \%" side="LEFT" style="-fx-tick-label-fill: #1D1D1F; -fx-font-size: 11px; -fx-font-weight: bold;" tickLabelFill="#1D1D1F" /></yAxis>
+                                    </LineChart>
+                                    
+                                    <VBox fx:id="vboxScaleDetails" spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 8, 0, 0, 2);">
+                                       <children>
+                                          <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 0 0 4 0;" text="Scale Details &amp; History Logs" />
+                                          <VBox fx:id="vboxScaleDetailsList" spacing="8.0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        
+                        <!-- Right Column: Stats and Actions -->
+                        <VBox prefWidth="340.0" spacing="16.0">
+                           <children>
+                              <!-- Current Readings Card -->
+                              <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                                 <children>
+                                    <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 11px; -fx-font-weight: 700;" text="LATEST READINGS" />
+                                    <HBox alignment="CENTER_LEFT" spacing="20.0">
+                                       <children>
+                                          <!-- Oxygen -->
+                                          <VBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 11px; -fx-font-weight: bold;" text="Blood Oxygen" />
+                                                <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                                   <children>
+                                                      <Label fx:id="lblCurrentOxygen" style="-fx-font-size: 30px; -fx-font-weight: 800; -fx-text-fill: #0071E3;" text="--" />
+                                                      <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 14px; -fx-font-weight: 700;" text="\%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <!-- Divider -->
+                                          <VBox style="-fx-background-color: #E5E5EA; -fx-min-width: 1px; -fx-pref-height: 40px;" />
+                                          <!-- Temperature -->
+                                          <VBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 11px; -fx-font-weight: bold;" text="Temperature" />
+                                                <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                                   <children>
+                                                      <Label fx:id="lblCurrentTemp" style="-fx-font-size: 30px; -fx-font-weight: 800; -fx-text-fill: #FF9500;" text="--" />
+                                                      <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 14px; -fx-font-weight: 700;" text="°C" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <Label fx:id="lblUpdateStatus" style="-fx-text-fill: #8E8E93; -fx-font-size: 12px;" text="Updated: Today at 9:41 AM" />
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Logging Card -->
+                              <VBox spacing="14.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                                 <children>
+                                     <Label style="-fx-font-size: 14px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="Log Blood Oxygen &amp; Temp" />
+                                     <VBox spacing="6.0">
+                                        <children>
+                                           <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                              <children>
+                                                 <StackPane style="-fx-background-color: linear-gradient(to bottom right, #32ADE6, #0071E3); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                    <children>
+                                                       <Label style="-fx-text-fill: white; -fx-font-size: 9px; -fx-font-weight: 800;" text="O₂" />
+                                                    </children>
+                                                 </StackPane>
+                                                 <Label style="-fx-font-size: 12px; -fx-text-fill: #1D1D1F; -fx-font-weight: 600;" text="Oxygen Level (%)" />
+                                              </children>
+                                           </HBox>
+                                           <TextField fx:id="txtOxygenInput" promptText="e.g. 98" style="-fx-background-color: #F5F5F7; -fx-background-radius: 8; -fx-padding: 10 12 10 12; -fx-font-size: 14px; -fx-text-fill: #1D1D1F; -fx-border-color: transparent;" />
+                                        </children>
+                                     </VBox>
+                                     <VBox spacing="6.0">
+                                        <children>
+                                           <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                              <children>
+                                                 <StackPane style="-fx-background-color: linear-gradient(to bottom right, #FFB936, #FF9500); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                    <children>
+                                                       <Label style="-fx-text-fill: white; -fx-font-size: 10px; -fx-font-family: 'Segoe UI Emoji';" text="🌡" />
+                                                    </children>
+                                                 </StackPane>
+                                                 <Label style="-fx-font-size: 12px; -fx-text-fill: #1D1D1F; -fx-font-weight: 600;" text="Body Temperature (°C)" />
+                                              </children>
+                                           </HBox>
+                                           <TextField fx:id="txtTempInput" promptText="e.g. 36.6" style="-fx-background-color: #F5F5F7; -fx-background-radius: 8; -fx-padding: 10 12 10 12; -fx-font-size: 14px; -fx-text-fill: #1D1D1F; -fx-border-color: transparent;" />
+                                        </children>
+                                     </VBox>
+                                     <Button maxWidth="Infinity" onAction="#handleLogOxygen" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 12; -fx-cursor: hand; -fx-border-color: #E5E5EA; -fx-border-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                                        <graphic>
+                                           <HBox alignment="CENTER" spacing="8.0">
+                                              <children>
+                                                 <StackPane style="-fx-background-color: linear-gradient(to bottom right, #32ADE6, #0071E3); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                    <children>
+                                                       <Label style="-fx-text-fill: white; -fx-font-size: 9px; -fx-font-weight: 800;" text="O₂" />
+                                                    </children>
+                                                 </StackPane>
+                                                 <Label style="-fx-text-fill: #0071E3; -fx-font-weight: 700; -fx-font-size: 13px;" text="Add Readings" />
+                                              </children>
+                                           </HBox>
+                                        </graphic>
+                                     </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

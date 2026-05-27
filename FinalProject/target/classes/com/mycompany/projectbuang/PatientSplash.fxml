@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Saved inside: src/main/resources/com/mycompany/projectbuang/patient_splash.fxml -->
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1150.0" style="-fx-background-color: #F5F5F7; -fx-font-family: '.AppleSystemUIFont', 'SF Pro', sans-serif;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectbuang.PatientSplashController">
+   <children>
+      <VBox alignment="CENTER" spacing="28.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fill="#34C759" radius="32.0" stroke="transparent"/>
+            <VBox alignment="CENTER" spacing="6.0">
+               <children>
+                  <Label fx:id="lblPatientGreeting" style="-fx-font-size: 24px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F; -fx-letter-spacing: -0.5px;" text="Opening Your User Portal"/>
+                  <Label style="-fx-font-size: 13px; -fx-text-fill: #86868B;" text="Connecting to your user records securely..."/>
+               </children>
+            </VBox>
+            <ProgressIndicator prefHeight="36.0" prefWidth="36.0" style="-fx-progress-color: #34C759;"/>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

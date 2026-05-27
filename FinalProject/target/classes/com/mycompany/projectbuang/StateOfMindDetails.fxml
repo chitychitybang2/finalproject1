@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Saved inside: src/main/resources/com/mycompany/projectbuang/StateOfMindDetails.fxml -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="760.0" prefWidth="880.0" style="-fx-background-color: #F5F5F7; -fx-font-family: '.AppleSystemUIFont', 'SF Pro', sans-serif;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectbuang.StateOfMindDetailsController">
+   <children>
+      <VBox spacing="16.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="16.0" left="20.0" right="20.0" top="16.0" />
+         </padding>
+         <children>
+            <!-- Top Header Navigation -->
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+               <children>
+                  <Button onAction="#handleClose" style="-fx-background-color: #E5E5EA; -fx-text-fill: #1D1D1F; -fx-background-radius: 20; -fx-min-width: 40px; -fx-min-height: 40px; -fx-font-size: 16px; -fx-font-weight: bold; -fx-cursor: hand;" text="‹" />
+                  <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 20px; -fx-font-weight: 700;" text="My Condition" />
+                  <HBox HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+               <content>
+                  <StackPane alignment="TOP_CENTER" style="-fx-background-color: transparent; -fx-padding: 20 0 20 0;">
+                     <children>
+                        <!-- Main Card VBox -->
+                        <VBox spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 32; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 12, 0, 0, 4); -fx-max-width: 540.0;">
+                           <children>
+                              <!-- Selected MoodDisplay & Condition -->
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Label style="-fx-font-size: 14px; -fx-font-weight: 700; -fx-text-fill: #8E8E93;" text="Mood:" />
+                                    <Label fx:id="lblMoodTitle" style="-fx-font-size: 16px; -fx-font-weight: 800; -fx-text-fill: #34C759;" text="Calm" />
+                                    <Label style="-fx-font-size: 14px; -fx-font-weight: 700; -fx-text-fill: #8E8E93;" text="  |  " />
+                                    <Label style="-fx-font-size: 14px; -fx-font-weight: 700; -fx-text-fill: #8E8E93;" text="Condition:" />
+                                    <Label fx:id="lblConditionTitle" style="-fx-font-size: 16px; -fx-font-weight: 800; -fx-text-fill: #34C759;" text="Healthy" />
+                                 </children>
+                              </HBox>
+
+                              <!-- Mood Selector -->
+                              <VBox spacing="6.0">
+                                 <children>
+                                    <Label style="-fx-font-size: 14px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="How is your mood?" />
+                                    <ComboBox fx:id="comboMood" onAction="#handleMoodSelected" promptText="Select mood" style="-fx-background-color: #F5F5F7; -fx-background-radius: 10; -fx-padding: 4 8 4 8; -fx-font-size: 14px; -fx-text-fill: #1D1D1F; -fx-max-width: Infinity; -fx-border-color: transparent;" />
+                                 </children>
+                              </VBox>
+
+                              <!-- Condition Selector -->
+                              <VBox spacing="6.0">
+                                 <children>
+                                    <Label style="-fx-font-size: 14px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="What is your current condition/symptoms?" />
+                                    <ComboBox fx:id="comboCondition" onAction="#handleConditionSelected" promptText="Select condition" style="-fx-background-color: #F5F5F7; -fx-background-radius: 10; -fx-padding: 4 8 4 8; -fx-font-size: 14px; -fx-text-fill: #1D1D1F; -fx-max-width: Infinity; -fx-border-color: transparent;" />
+                                 </children>
+                              </VBox>
+                              
+
+                              
+                              <!-- Actions -->
+                              <HBox alignment="CENTER_RIGHT" spacing="12.0" style="-fx-padding: 10 0 0 0;">
+                                 <children>
+                                    <Button onAction="#handleClose" style="-fx-background-color: white; -fx-border-color: #D1D1D6; -fx-border-radius: 8; -fx-background-radius: 8; -fx-text-fill: #1D1D1F; -fx-padding: 10 24 10 24; -fx-font-weight: 600; -fx-font-size: 14px; -fx-cursor: hand;" text="Cancel" />
+                                    <Button onAction="#handleSave" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 10 28 10 28; -fx-cursor: hand; -fx-border-color: #E5E5EA; -fx-border-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                                        <graphic>
+                                           <HBox alignment="CENTER" spacing="8.0">
+                                              <children>
+                                                 <StackPane style="-fx-background-color: linear-gradient(to bottom right, #34C759, #11998e); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                    <children>
+                                                       <Label style="-fx-text-fill: white; -fx-font-size: 10px; -fx-font-family: 'Segoe UI Emoji';" text="📋" />
+                                                    </children>
+                                                 </StackPane>
+                                                 <Label style="-fx-text-fill: #34C759; -fx-font-weight: 700; -fx-font-size: 14px;" text="Save" />
+                                              </children>
+                                           </HBox>
+                                        </graphic>
+                                     </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </StackPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

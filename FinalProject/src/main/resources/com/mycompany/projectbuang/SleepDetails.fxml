@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Saved inside: src/main/resources/com/mycompany/projectbuang/SleepDetails.fxml -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Make sure all standard controls are imported -->
+
+<AnchorPane prefHeight="780.0" prefWidth="880.0" style="-fx-background-color: #F5F5F7; -fx-font-family: '.AppleSystemUIFont', 'SF Pro', sans-serif;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectbuang.SleepDetailsController">
+   <children>
+      <VBox spacing="18.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="16.0" left="20.0" right="20.0" top="16.0" />
+         </padding>
+         <children>
+            <!-- Top Header Navigation -->
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+               <children>
+                  <Button onAction="#handleClose" style="-fx-background-color: #E5E5EA; -fx-text-fill: #1D1D1F; -fx-background-radius: 20; -fx-min-width: 40px; -fx-min-height: 40px; -fx-font-size: 16px; -fx-font-weight: bold; -fx-cursor: hand;" text="‹" />
+                  <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 20px; -fx-font-weight: 700;" text="Sleep" />
+                  <HBox HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+
+            <!-- Day / Week / Month / Year Tab Bar -->
+            <HBox alignment="CENTER" style="-fx-background-color: #EEEEF0; -fx-background-radius: 12; -fx-padding: 3 3 3 3;">
+               <children>
+                  <Button fx:id="btnTabDay" onAction="#handleSelectDayTab" prefWidth="205.0" style="-fx-background-color: white; -fx-text-fill: #1D1D1F; -fx-background-radius: 9; -fx-font-weight: 700; -fx-font-size: 13px; -fx-cursor: hand; -fx-padding: 6 0 6 0; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 4, 0, 0, 1);" text="Day" />
+                  <Button fx:id="btnTabWeek" onAction="#handleSelectWeekTab" prefWidth="205.0" style="-fx-background-color: transparent; -fx-text-fill: #8E8E93; -fx-background-radius: 9; -fx-font-weight: 700; -fx-font-size: 13px; -fx-cursor: hand; -fx-padding: 6 0 6 0;" text="Week" />
+                  <Button fx:id="btnTabMonth" onAction="#handleSelectMonthTab" prefWidth="205.0" style="-fx-background-color: transparent; -fx-text-fill: #8E8E93; -fx-background-radius: 9; -fx-font-weight: 700; -fx-font-size: 13px; -fx-cursor: hand; -fx-padding: 6 0 6 0;" text="Month" />
+                  <Button fx:id="btnTabYear" onAction="#handleSelectYearTab" prefWidth="205.0" style="-fx-background-color: transparent; -fx-text-fill: #8E8E93; -fx-background-radius: 9; -fx-font-weight: 700; -fx-font-size: 13px; -fx-cursor: hand; -fx-padding: 6 0 6 0;" text="Year" />
+               </children>
+            </HBox>
+
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+               <content>
+                  <VBox spacing="18.0" style="-fx-background-color: transparent;">
+                     <children>
+                        <!-- Main Content Grid HBox -->
+                        <HBox alignment="TOP_LEFT" spacing="16.0">
+                           <children>
+                              
+                              <!-- Left Column: Sleep charts -->
+                              <VBox spacing="12.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <VBox spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 8, 0, 0, 2);">
+                                       <children>
+                                          <!-- Date Selector -->
+                                          <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                             <children>
+                                                <HBox alignment="CENTER" spacing="6.0" style="-fx-background-color: #EEEEF0; -fx-background-radius: 8; -fx-padding: 4 8 4 8; -fx-cursor: hand;">
+                                                   <children>
+                                                      <Label fx:id="lblDateSelector" style="-fx-text-fill: #1D1D1F; -fx-font-size: 13px; -fx-font-weight: 600;" text="Fri, 27 Mar" />
+                                                      <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 8px;" text="▼" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </HBox>
+
+                                          <!-- Native Chart Stack -->
+                                          <StackPane>
+                                             <children>
+                                                <!-- Day View Hypnogram -->
+                                                <LineChart fx:id="chartSleepLine" alternativeRowFillVisible="false" horizontalGridLinesVisible="true" legendVisible="false" prefHeight="340.0" verticalGridLinesVisible="false">
+                                                   <xAxis><CategoryAxis label="Time of Night" side="BOTTOM" style="-fx-tick-label-fill: #1D1D1F; -fx-font-size: 11px; -fx-font-weight: bold;" tickLabelFill="#1D1D1F" /></xAxis>
+                                                   <yAxis><NumberAxis label="Sleep Phase (1-4)" side="LEFT" style="-fx-tick-label-fill: #1D1D1F; -fx-font-size: 11px; -fx-font-weight: bold;" tickLabelFill="#1D1D1F" /></yAxis>
+                                                </LineChart>
+                                                
+                                                <!-- Week/Month/Year Stacked Sleep Stages -->
+                                                <StackedBarChart fx:id="chartSleepBar" alternativeRowFillVisible="false" horizontalGridLinesVisible="true" legendVisible="true" managed="false" prefHeight="340.0" verticalGridLinesVisible="false" visible="false">
+                                                   <xAxis><CategoryAxis label="Date" side="BOTTOM" style="-fx-tick-label-fill: #1D1D1F; -fx-font-size: 11px; -fx-font-weight: bold;" tickLabelFill="#1D1D1F" /></xAxis>
+                                                   <yAxis><NumberAxis label="Hours" side="LEFT" style="-fx-tick-label-fill: #1D1D1F; -fx-font-size: 11px; -fx-font-weight: bold;" tickLabelFill="#1D1D1F" /></yAxis>
+                                                </StackedBarChart>
+                                             </children>
+                                          </StackPane>
+
+                                          <VBox fx:id="vboxScaleDetails" spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 8, 0, 0, 2);">
+                                             <children>
+                                                <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 0 0 4 0;" text="Scale Details &amp; History Logs" />
+                                                <VBox fx:id="vboxScaleDetailsList" spacing="8.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+
+                              <!-- Right Column: Sleep Stats, Assist, Actions -->
+                              <VBox prefWidth="340.0" spacing="12.0">
+                                 <children>
+                                    <!-- Sleep Duration Summary Card -->
+                                    <VBox spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 8, 0, 0, 2);">
+                                       <children>
+                                          <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 11px; -fx-font-weight: 700; -fx-letter-spacing: 0.5px;" text="TIME ASLEEP" />
+                                          <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                             <children>
+                                                <Label fx:id="lblSleepHoursVal" style="-fx-text-fill: #1D1D1F; -fx-font-size: 32px; -fx-font-weight: 800;" text="8" />
+                                                <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 14px; -fx-font-weight: 600; -fx-padding: 0 6 0 0;" text="hr" />
+                                                <Label fx:id="lblSleepMinutesVal" style="-fx-text-fill: #1D1D1F; -fx-font-size: 32px; -fx-font-weight: 800;" text="45" />
+                                                <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 14px; -fx-font-weight: 600;" text="min" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                     <!-- Actions Panel -->
+                                     <Button maxWidth="Infinity" onAction="#handleLogSleep" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 14; -fx-cursor: hand; -fx-border-color: #E5E5EA; -fx-border-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                                        <graphic>
+                                           <HBox alignment="CENTER" spacing="8.0">
+                                              <children>
+                                                 <StackPane style="-fx-background-color: linear-gradient(to bottom right, #5856D6, #3F3D56); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                    <children>
+                                                       <Label style="-fx-text-fill: white; -fx-font-size: 10px; -fx-font-family: 'Segoe UI Emoji';" text="🌙" />
+                                                    </children>
+                                                 </StackPane>
+                                                 <Label style="-fx-text-fill: #5856D6; -fx-font-weight: 700; -fx-font-size: 14px;" text="Log Sleep Duration" />
+                                              </children>
+                                           </HBox>
+                                        </graphic>
+                                     </Button>
+                                 </children>
+                              </VBox>
+
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

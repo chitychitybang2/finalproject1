@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Saved inside: src/main/resources/com/mycompany/projectbuang/PatientDashboard.fxml -->
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="760.0" prefWidth="1200.0" style="-fx-background-color: #F5F5F7; -fx-font-family: '.AppleSystemUIFont', 'SF Pro', sans-serif;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectbuang.PatientDashboardController">
+   <children>
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         
+         <!-- Left Sidebar -->
+         <left>
+            <VBox fx:id="sidebarVBox" prefWidth="280.0" spacing="20.0" style="-fx-background-color: white; -fx-padding: 24 16 24 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 10, 0, 0, 0);">
+               <children>
+                  <!-- Sidebar Toggle Header -->
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <HBox HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnToggleSidebar" onAction="#handleToggleSidebar" style="-fx-background-color: #F5F5F7; -fx-background-radius: 8; -fx-text-fill: #1D1D1F; -fx-font-weight: bold; -fx-cursor: hand; -fx-min-width: 32px; -fx-min-height: 32px;" text="◂" />
+                     </children>
+                  </HBox>
+
+                  <Label fx:id="lblSidebarHeader" style="-fx-font-size: 28px; -fx-font-weight: 800; -fx-text-fill: #1D1D1F; -fx-letter-spacing: -0.5px;" text="Summary" />
+                  
+                  <!-- Static Quick Links -->
+                  <VBox spacing="6.0">
+                     <children>
+                        <HBox fx:id="itemSummary" alignment="CENTER_LEFT" onMouseClicked="#handleShowSummary" spacing="10.0" style="-fx-background-color: #E8F2FF; -fx-background-radius: 10; -fx-padding: 10 12 10 12; -fx-cursor: hand;">
+                           <children>
+                              <StackPane style="-fx-background-color: linear-gradient(to bottom right, #32ADE6, #0071E3); -fx-background-radius: 6; -fx-min-width: 24px; -fx-min-height: 24px; -fx-max-width: 24px; -fx-max-height: 24px;">
+                                 <children>
+                                    <Label style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI Emoji';" text="🏠" />
+                                 </children>
+                              </StackPane>
+                              <Label fx:id="lblMenuSummaryText" style="-fx-text-fill: #0071E3; -fx-font-weight: 700; -fx-font-size: 14px;" text="Summary" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Health Categories Section -->
+                  <Label fx:id="lblCategoriesHeader" style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #86868B; -fx-letter-spacing: 0.5px;" text="Health Categories" />
+                  
+                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                     <content>
+                        <VBox spacing="8.0">
+                           <children>
+                              <!-- Activity -->
+                              <HBox fx:id="itemActivity" alignment="CENTER_LEFT" onMouseClicked="#handleOpenActivityDetails" spacing="10.0" style="-fx-background-radius: 10; -fx-padding: 10 12 10 12; -fx-cursor: hand;">
+                                 <children>
+                                    <StackPane style="-fx-background-color: linear-gradient(to bottom right, #FF5E5B, #FF2D55); -fx-background-radius: 6; -fx-min-width: 24px; -fx-min-height: 24px; -fx-max-width: 24px; -fx-max-height: 24px;">
+                                       <children>
+                                          <Label style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI Emoji';" text="🔥" />
+                                       </children>
+                                    </StackPane>
+                                    <Label fx:id="lblMenuActivityText" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #1D1D1F;" text="Activity" />
+                                 </children>
+                              </HBox>
+                              
+                              <!-- BMI -->
+                              <HBox fx:id="itemBMI" alignment="CENTER_LEFT" onMouseClicked="#handleOpenStayFitPlan" spacing="10.0" style="-fx-background-radius: 10; -fx-padding: 10 12 10 12; -fx-cursor: hand;">
+                                 <children>
+                                    <StackPane style="-fx-background-color: linear-gradient(to bottom right, #BF5AF2, #8E2DE2); -fx-background-radius: 6; -fx-min-width: 24px; -fx-min-height: 24px; -fx-max-width: 24px; -fx-max-height: 24px;">
+                                       <children>
+                                          <Label style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI Emoji';" text="🏃" />
+                                       </children>
+                                    </StackPane>
+                                    <Label fx:id="lblMenuBMIText" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #1D1D1F;" text="BMI" />
+                                 </children>
+                              </HBox>
+                              
+                              <!-- Weight -->
+                              <HBox fx:id="itemWeight" alignment="CENTER_LEFT" onMouseClicked="#handleOpenWeightDetails" spacing="10.0" style="-fx-background-radius: 10; -fx-padding: 10 12 10 12; -fx-cursor: hand;">
+                                 <children>
+                                    <StackPane style="-fx-background-color: linear-gradient(to bottom right, #AF52DE, #5856D6); -fx-background-radius: 6; -fx-min-width: 24px; -fx-min-height: 24px; -fx-max-width: 24px; -fx-max-height: 24px;">
+                                       <children>
+                                          <Label style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI Emoji';" text="⚖" />
+                                       </children>
+                                    </StackPane>
+                                    <Label fx:id="lblMenuWeightText" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #1D1D1F;" text="Weight" />
+                                 </children>
+                              </HBox>
+                              
+                              <!-- Heart -->
+                              <HBox fx:id="itemHeart" alignment="CENTER_LEFT" onMouseClicked="#handleOpenHeartDetails" spacing="10.0" style="-fx-background-radius: 10; -fx-padding: 10 12 10 12; -fx-cursor: hand;">
+                                 <children>
+                                    <StackPane style="-fx-background-color: linear-gradient(to bottom right, #FF2D55, #FF3B30); -fx-background-radius: 6; -fx-min-width: 24px; -fx-min-height: 24px; -fx-max-width: 24px; -fx-max-height: 24px;">
+                                       <children>
+                                          <Label style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI Emoji';" text="❤" />
+                                       </children>
+                                    </StackPane>
+                                    <Label fx:id="lblMenuHeartText" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #1D1D1F;" text="Heart" />
+                                 </children>
+                              </HBox>
+                              
+                              <!-- Oxygen -->
+                              <HBox fx:id="itemOxygen" alignment="CENTER_LEFT" onMouseClicked="#handleOpenOxygenDetails" spacing="10.0" style="-fx-background-radius: 10; -fx-padding: 10 12 10 12; -fx-cursor: hand;">
+                                 <children>
+                                    <StackPane style="-fx-background-color: linear-gradient(to bottom right, #32ADE6, #0071E3); -fx-background-radius: 6; -fx-min-width: 24px; -fx-min-height: 24px; -fx-max-width: 24px; -fx-max-height: 24px;">
+                                       <children>
+                                          <Label style="-fx-text-fill: white; -fx-font-size: 11px; -fx-font-weight: 800;" text="O₂" />
+                                       </children>
+                                    </StackPane>
+                                    <Label fx:id="lblMenuOxygenText" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #1D1D1F;" text="Oxygen" />
+                                 </children>
+                              </HBox>
+                              
+                              <!-- Sleep -->
+                              <HBox fx:id="itemSleep" alignment="CENTER_LEFT" onMouseClicked="#handleOpenSleepDetails" spacing="10.0" style="-fx-background-radius: 10; -fx-padding: 10 12 10 12; -fx-cursor: hand;">
+                                 <children>
+                                    <StackPane style="-fx-background-color: linear-gradient(to bottom right, #5856D6, #3F3D56); -fx-background-radius: 6; -fx-min-width: 24px; -fx-min-height: 24px; -fx-max-width: 24px; -fx-max-height: 24px;">
+                                       <children>
+                                          <Label style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI Emoji';" text="🌙" />
+                                       </children>
+                                    </StackPane>
+                                    <Label fx:id="lblMenuSleepText" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #1D1D1F;" text="Sleep" />
+                                 </children>
+                              </HBox>
+                              
+                              <!-- My Condition -->
+                              <HBox fx:id="itemCondition" alignment="CENTER_LEFT" onMouseClicked="#handleOpenStateOfMind" spacing="10.0" style="-fx-background-radius: 10; -fx-padding: 10 12 10 12; -fx-cursor: hand;">
+                                 <children>
+                                    <StackPane style="-fx-background-color: linear-gradient(to bottom right, #34C759, #11998e); -fx-background-radius: 6; -fx-min-width: 24px; -fx-min-height: 24px; -fx-max-width: 24px; -fx-max-height: 24px;">
+                                       <children>
+                                          <Label style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI Emoji';" text="📋" />
+                                       </children>
+                                    </StackPane>
+                                    <Label fx:id="lblMenuConditionText" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #1D1D1F;" text="My Condition" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  
+                  <!-- Reset All Data Button -->
+                  <Button fx:id="btnResetAll" maxWidth="1.7976931348623157E308" onAction="#handleResetAllData" style="-fx-background-color: #FFE6E6; -fx-text-fill: #FF3B30; -fx-background-radius: 10; -fx-padding: 10 12 10 12; -fx-font-weight: 700; -fx-font-size: 14px; -fx-cursor: hand; -fx-alignment: CENTER;" text="🔄 Reset All Data" />
+               </children>
+            </VBox>
+         </left>
+         
+         <!-- Main Content Pane -->
+         <center>
+            <StackPane fx:id="centerStack">
+               <children>
+                  <ScrollPane fx:id="scrollMainOverview" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
+                     <content>
+                        <VBox spacing="28.0" style="-fx-padding: 32 40 32 40;">
+                     <children>
+                        
+                        <!-- Profile Banner Section with linear gradient background -->
+                        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: linear-gradient(to right, #E0F2FE, #FCE7F3); -fx-background-radius: 20; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 12, 0, 0, 2);">
+                           <children>
+                              <!-- Circular Avatar Image Placeholder -->
+                              <StackPane>
+                                 <children>
+                                    <ImageView fx:id="imgAvatar" fitHeight="64.0" fitWidth="64.0">
+                                       <image>
+                                          <Image url="@avatar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </StackPane>
+                              <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label fx:id="lblWelcomeName" style="-fx-font-size: 26px; -fx-font-weight: 800; -fx-text-fill: #1D1D1F; -fx-letter-spacing: -0.5px;" text="Alejandra" />
+                                     <HBox alignment="CENTER_LEFT" onMouseClicked="#handleOpenProfile" spacing="6.0" style="-fx-cursor: hand;">
+                                        <children>
+                                           <Label style="-fx-font-size: 13px; -fx-text-fill: #0071E3; -fx-font-weight: 600;" text="Profile" />
+                                           <Label style="-fx-font-size: 11px; -fx-text-fill: #86868B;" text="&gt;" />
+                                        </children>
+                                     </HBox>
+                                    <Label fx:id="lblPatientMetaInfo" style="-fx-font-size: 11px; -fx-text-fill: #86868B;" text="Last sync: Today at 9:41 AM" />
+                                 </children>
+                              </VBox>
+                              <Button onAction="#handleLogout" style="-fx-background-color: #FF3B30; -fx-text-fill: white; -fx-background-radius: 10; -fx-padding: 8 16 8 16; -fx-font-weight: 600; -fx-font-size: 13px;" text="Log Out" />
+                           </children>
+                        </HBox>
+                        
+                        <!-- Health Cards Grid Layout -->
+                        <GridPane hgap="16.0" vgap="16.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                              <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                           </columnConstraints>
+                           
+                           <children>
+                              <!-- Card 1: Activity -->
+                              <VBox onMouseClicked="#handleOpenActivityDetails" spacing="14.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                             <children>
+                                                <StackPane style="-fx-background-color: linear-gradient(to bottom right, #FF5E5B, #FF2D55); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                   <children>
+                                                      <Label style="-fx-text-fill: white; -fx-font-size: 10px; -fx-font-family: 'Segoe UI Emoji';" text="🔥" />
+                                                   </children>
+                                                </StackPane>
+                                                <Label style="-fx-text-fill: #FF2D55; -fx-font-weight: 700; -fx-font-size: 12px; -fx-letter-spacing: 0.5px;" text="ACTIVITY" />
+                                             </children>
+                                          </HBox>
+                                          <HBox HBox.hgrow="ALWAYS" />
+                                          <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px;" text="9:41 AM" />
+                                       </children>
+                                    </HBox>
+                                    
+                                    <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                       <children>
+                                          <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <VBox>
+                                                   <children>
+                                                      <Label style="-fx-font-size: 11px; -fx-font-weight: 600; -fx-text-fill: #FF2D55;" text="Move" />
+                                                      <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                                         <children>
+                                                            <Label fx:id="lblMove" style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="--" />
+                                                            <Label style="-fx-font-size: 11px; -fx-text-fill: #86868B;" text="cal" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox>
+                                                   <children>
+                                                      <Label style="-fx-font-size: 11px; -fx-font-weight: 600; -fx-text-fill: #34C759;" text="Exercise" />
+                                                      <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                                         <children>
+                                                            <Label fx:id="lblExercise" style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="--" />
+                                                            <Label style="-fx-font-size: 11px; -fx-text-fill: #86868B;" text="min" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox>
+                                                   <children>
+                                                      <Label style="-fx-font-size: 11px; -fx-font-weight: 600; -fx-text-fill: #0071E3;" text="Stand" />
+                                                      <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                                         <children>
+                                                            <Label fx:id="lblStand" style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="--" />
+                                                            <Label style="-fx-font-size: 11px; -fx-text-fill: #86868B;" text="hr" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                          
+                                          <!-- Pure Vector Activity Rings -->
+                                          <StackPane alignment="CENTER" prefHeight="80.0" prefWidth="80.0">
+                                             <children>
+                                                <Group>
+                                                   <children>
+                                                      <!-- Red Outer Ring -->
+                                                      <Circle centerX="40.0" centerY="40.0" fill="transparent" radius="34.0" stroke="#FFE2E6" strokeWidth="6.0" />
+                                                      <Arc fx:id="arcMove" centerX="40.0" centerY="40.0" fill="transparent" length="-270.0" radiusX="34.0" radiusY="34.0" startAngle="90.0" stroke="#FF2D55" strokeLineCap="ROUND" strokeWidth="6.0" />
+                                                      
+                                                      <!-- Green Middle Ring -->
+                                                      <Circle centerX="40.0" centerY="40.0" fill="transparent" radius="25.0" stroke="#E6F9F0" strokeWidth="6.0" />
+                                                      <Arc fx:id="arcExercise" centerX="40.0" centerY="40.0" fill="transparent" length="-180.0" radiusX="25.0" radiusY="25.0" startAngle="90.0" stroke="#34C759" strokeLineCap="ROUND" strokeWidth="6.0" />
+                                                      
+                                                      <!-- Blue Inner Ring -->
+                                                      <Circle centerX="40.0" centerY="40.0" fill="transparent" radius="16.0" stroke="#E6F2FF" strokeWidth="6.0" />
+                                                      <Arc fx:id="arcStand" centerX="40.0" centerY="40.0" fill="transparent" length="-90.0" radiusX="16.0" radiusY="16.0" startAngle="90.0" stroke="#0071E3" strokeLineCap="ROUND" strokeWidth="6.0" />
+                                                   </children>
+                                                </Group>
+                                             </children>
+                                          </StackPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Card 2: Body Mass Index (BMI) & Stay Fit Plan -->
+                              <VBox onMouseClicked="#handleOpenStayFitPlan" spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                             <children>
+                                                <StackPane style="-fx-background-color: linear-gradient(to bottom right, #BF5AF2, #8E2DE2); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                   <children>
+                                                      <Label style="-fx-text-fill: white; -fx-font-size: 10px; -fx-font-family: 'Segoe UI Emoji';" text="🏃" />
+                                                   </children>
+                                                </StackPane>
+                                                <Label style="-fx-text-fill: #0071E3; -fx-font-weight: 700; -fx-font-size: 12px; -fx-letter-spacing: 0.5px;" text="BODY MASS INDEX (BMI)" />
+                                             </children>
+                                          </HBox>
+                                          <HBox HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="lblStayFitPlanStatus" style="-fx-text-fill: #34C759; -fx-font-weight: 700; -fx-font-size: 11px;" text="Plan Active" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label fx:id="lblBMI" style="-fx-font-size: 26px; -fx-font-weight: 800; -fx-text-fill: #1D1D1F;" text="--" />
+                                          <Label fx:id="lblBMICategory" style="-fx-font-size: 12px; -fx-text-fill: #34C759; -fx-font-weight: 700; -fx-background-color: #E6F7ED; -fx-background-radius: 6; -fx-padding: 4 8 4 8;" text="Normal" />
+                                       </children>
+                                    </HBox>
+                                    <Label fx:id="lblStayFitPlanDetails" style="-fx-font-size: 13px; -fx-text-fill: #86868B;" text="Height: 160 cm | Goal: 60.0 kg. Click to open Stay Fit Plan wizard." wrapText="true" />
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Card 3: Weight -->
+                              <VBox onMouseClicked="#handleOpenWeightDetails" spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                             <children>
+                                                <StackPane style="-fx-background-color: linear-gradient(to bottom right, #AF52DE, #5856D6); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                   <children>
+                                                      <Label style="-fx-text-fill: white; -fx-font-size: 10px; -fx-font-family: 'Segoe UI Emoji';" text="⚖" />
+                                                   </children>
+                                                </StackPane>
+                                                <Label style="-fx-text-fill: #BF5AF2; -fx-font-weight: 700; -fx-font-size: 12px; -fx-letter-spacing: 0.5px;" text="WEIGHT" />
+                                             </children>
+                                          </HBox>
+                                          <HBox HBox.hgrow="ALWAYS" />
+                                          <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px;" text="9:15 AM" />
+                                       </children>
+                                    </HBox>
+                                    <Label style="-fx-font-size: 12px; -fx-text-fill: #86868B; -fx-font-weight: 600;" text="Body Mass Index Log" />
+                                    <HBox alignment="BOTTOM_LEFT" spacing="12.0">
+                                       <children>
+                                          <HBox alignment="BASELINE_LEFT" spacing="2.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label fx:id="lblWeight" style="-fx-font-size: 32px; -fx-font-weight: 800; -fx-text-fill: #1D1D1F;" text="--" />
+                                                <Label style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #86868B;" text="kg" />
+                                             </children>
+                                          </HBox>
+                                          
+                                          <!-- Weight Trend Sparkline -->
+                                          <HBox alignment="BOTTOM_LEFT" prefHeight="35.0" spacing="4.0">
+                                             <children>
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#BF5AF2" height="28.0" width="6.0" />
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#BF5AF2" height="26.0" width="6.0" />
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#BF5AF2" height="25.0" width="6.0" />
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#BF5AF2" height="27.0" width="6.0" />
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#BF5AF2" height="25.0" width="6.0" />
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#BF5AF2" height="24.0" width="6.0" />
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#BF5AF2" height="24.0" width="6.0" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Card 4: Resting Heart Rate -->
+                              <VBox onMouseClicked="#handleOpenHeartDetails" spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                             <children>
+                                                <StackPane style="-fx-background-color: linear-gradient(to bottom right, #FF2D55, #FF3B30); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                   <children>
+                                                      <Label style="-fx-text-fill: white; -fx-font-size: 10px; -fx-font-family: 'Segoe UI Emoji';" text="❤" />
+                                                   </children>
+                                                </StackPane>
+                                                <Label style="-fx-text-fill: #FF2D55; -fx-font-weight: 700; -fx-font-size: 12px; -fx-letter-spacing: 0.5px;" text="HEART RATE" />
+                                             </children>
+                                          </HBox>
+                                          <HBox HBox.hgrow="ALWAYS" />
+                                          <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px;" text="7:00 AM" />
+                                       </children>
+                                    </HBox>
+                                    
+                                    <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                       <children>
+                                          <HBox alignment="BASELINE_LEFT" spacing="2.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <!-- Connected to telemetry heartRate -->
+                                                <Label fx:id="lblHeartRate" style="-fx-font-size: 32px; -fx-font-weight: 800; -fx-text-fill: #1D1D1F;" text="62" />
+                                                <Label style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #86868B;" text="BPM" />
+                                             </children>
+                                          </HBox>
+                                          
+                                          <!-- Sparkline Vector Chart -->
+                                          <Polyline fill="transparent" points="0.0, 18.0, 12.0, 12.0, 24.0, 22.0, 36.0, 4.0, 48.0, 25.0, 60.0, 15.0, 72.0, 24.0" stroke="#FF2D55" strokeWidth="2.5" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="10.0">
+                                       <children>
+                                          <Label fx:id="lblTemperature" style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #FF9500;" text="Temp: --°C" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Card 5: Blood Oxygen -->
+                              <VBox onMouseClicked="#handleOpenOxygenDetails" spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                             <children>
+                                                <StackPane style="-fx-background-color: linear-gradient(to bottom right, #32ADE6, #0071E3); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                   <children>
+                                                      <Label style="-fx-text-fill: white; -fx-font-size: 9px; -fx-font-weight: 800;" text="O₂" />
+                                                   </children>
+                                                </StackPane>
+                                                <Label style="-fx-text-fill: #0071E3; -fx-font-weight: 700; -fx-font-size: 12px; -fx-letter-spacing: 0.5px;" text="BLOOD OXYGEN" />
+                                             </children>
+                                          </HBox>
+                                          <HBox HBox.hgrow="ALWAYS" />
+                                          <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px;" text="9:41 AM" />
+                                       </children>
+                                    </HBox>
+                                    <Label style="-fx-font-size: 12px; -fx-text-fill: #86868B; -fx-font-weight: 600;" text="Oxygen Saturation Level" />
+                                    <HBox alignment="BOTTOM_LEFT" spacing="12.0">
+                                       <children>
+                                          <HBox alignment="BASELINE_LEFT" spacing="2.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label fx:id="lblOxygen" style="-fx-font-size: 32px; -fx-font-weight: 800; -fx-text-fill: #1D1D1F;" text="--" />
+                                                <Label style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #86868B;" text="\%" />
+                                             </children>
+                                          </HBox>
+                                          <Polyline fill="transparent" points="0.0, 20.0, 15.0, 20.0, 30.0, 18.0, 45.0, 20.0, 60.0, 22.0, 75.0, 20.0" stroke="#0071E3" strokeWidth="2.5" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Card 6: Sleep -->
+                              <VBox onMouseClicked="#handleOpenSleepDetails" spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                             <children>
+                                                <StackPane style="-fx-background-color: linear-gradient(to bottom right, #5856D6, #3F3D56); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                   <children>
+                                                      <Label style="-fx-text-fill: white; -fx-font-size: 10px; -fx-font-family: 'Segoe UI Emoji';" text="🌙" />
+                                                   </children>
+                                                </StackPane>
+                                                <Label style="-fx-text-fill: #5856D6; -fx-font-weight: 700; -fx-font-size: 12px; -fx-letter-spacing: 0.5px;" text="SLEEP" />
+                                             </children>
+                                          </HBox>
+                                          <HBox HBox.hgrow="ALWAYS" />
+                                          <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px;" text="6:30 AM" />
+                                       </children>
+                                    </HBox>
+                                    <Label style="-fx-font-size: 12px; -fx-text-fill: #86868B; -fx-font-weight: 600;" text="Time Asleep" />
+                                    
+                                    <HBox alignment="BOTTOM_LEFT" spacing="12.0">
+                                       <children>
+                                          <HBox alignment="BASELINE_LEFT" spacing="2.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label fx:id="lblSleepHours" style="-fx-font-size: 26px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="--" />
+                                                <Label style="-fx-font-size: 12px; -fx-text-fill: #86868B; -fx-padding: 0 4 0 0;" text="hr" />
+                                                <Label fx:id="lblSleepMinutes" style="-fx-font-size: 26px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="--" />
+                                                <Label style="-fx-font-size: 12px; -fx-text-fill: #86868B;" text="min" />
+                                             </children>
+                                          </HBox>
+                                          
+                                          <!-- Sleep Bar Chart -->
+                                          <HBox alignment="BOTTOM_LEFT" prefHeight="35.0" spacing="4.0">
+                                             <children>
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#5856D6" height="15.0" width="6.0" />
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#5856D6" height="22.0" width="6.0" />
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#5856D6" height="10.0" width="6.0" />
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#5856D6" height="28.0" width="6.0" />
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#5856D6" height="18.0" width="6.0" />
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#5856D6" height="25.0" width="6.0" />
+                                                <Rectangle arcHeight="3" arcWidth="3" fill="#5856D6" height="32.0" width="6.0" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Card 7: My Condition -->
+                              <VBox onMouseClicked="#handleOpenStateOfMind" spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-cursor: hand;" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                             <children>
+                                                <StackPane style="-fx-background-color: linear-gradient(to bottom right, #34C759, #11998e); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                   <children>
+                                                      <Label style="-fx-text-fill: white; -fx-font-size: 10px; -fx-font-family: 'Segoe UI Emoji';" text="📋" />
+                                                   </children>
+                                                </StackPane>
+                                                <Label style="-fx-text-fill: #30D158; -fx-font-weight: 700; -fx-font-size: 12px; -fx-letter-spacing: 0.5px;" text="MY CONDITION" />
+                                             </children>
+                                          </HBox>
+                                          <HBox HBox.hgrow="ALWAYS" />
+                                          <Label style="-fx-text-fill: #86868B; -fx-font-size: 11px;" text="9:41 AM" />
+                                       </children>
+                                    </HBox>
+                                    
+                                    <HBox alignment="CENTER_LEFT" spacing="24.0">
+                                       <children>
+                                          <VBox spacing="4.0">
+                                             <children>
+                                                <Label style="-fx-font-size: 11px; -fx-text-fill: #86868B; -fx-font-weight: 600;" text="CURRENT CONDITION" />
+                                                <Label fx:id="lblCurrentCondition" style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #34C759;" text="Healthy" />
+                                             </children>
+                                          </VBox>
+                                          <VBox spacing="4.0">
+                                             <children>
+                                                <Label style="-fx-font-size: 11px; -fx-text-fill: #86868B; -fx-font-weight: 600;" text="MOOD STATE" />
+                                                <Label fx:id="lblStateOfMindBadge" style="-fx-font-size: 12px; -fx-text-fill: #34C759; -fx-font-weight: 700; -fx-background-color: #E6F7ED; -fx-background-radius: 6; -fx-padding: 4 8 4 8;" text="--" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <rowConstraints>
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                           </rowConstraints>
+                        </GridPane>
+                        
+                        <!-- Clinical Updates Section (Observation History) -->
+                        <VBox spacing="16.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 12, 0, 0, 4);">
+                           <children>
+                              <Label style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1D1D1F;" text="My Activity Updates &amp; Observation History" />
+                              <ScrollPane fitToWidth="true" prefHeight="160.0" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
+                                 <content>
+                                    <VBox fx:id="vboxNotesContainer" spacing="10.0" />
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </StackPane>
+   </center>
+         
+      </BorderPane>
+   </children>
+</AnchorPane>

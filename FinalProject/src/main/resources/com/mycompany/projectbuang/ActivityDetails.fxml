@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Saved inside: src/main/resources/com/mycompany/projectbuang/ActivityDetails.fxml -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="760.0" prefWidth="880.0" style="-fx-background-color: #F5F5F7; -fx-font-family: '.AppleSystemUIFont', 'SF Pro', sans-serif;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectbuang.ActivityDetailsController">
+   <children>
+      <VBox spacing="16.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="16.0" left="20.0" right="20.0" top="16.0" />
+         </padding>
+         <children>
+            <!-- Top Header Navigation -->
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+               <children>
+                  <Button onAction="#handleClose" style="-fx-background-color: #E5E5EA; -fx-text-fill: #1D1D1F; -fx-background-radius: 20; -fx-min-width: 40px; -fx-min-height: 40px; -fx-font-size: 16px; -fx-font-weight: bold; -fx-cursor: hand;" text="‹" />
+                  <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 20px; -fx-font-weight: 700;" text="Steps" />
+                  <HBox HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+
+            <!-- Day / Week / Month / Year Tab Bar -->
+            <HBox alignment="CENTER" style="-fx-background-color: #EEEEF0; -fx-background-radius: 12; -fx-padding: 3 3 3 3;">
+               <children>
+                  <Button fx:id="btnTabDay" onAction="#handleSelectDayTab" prefWidth="205.0" style="-fx-background-color: white; -fx-text-fill: #1D1D1F; -fx-background-radius: 9; -fx-font-weight: 700; -fx-font-size: 13px; -fx-cursor: hand; -fx-padding: 6 0 6 0; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 4, 0, 0, 1);" text="Day" />
+                  <Button fx:id="btnTabWeek" onAction="#handleSelectWeekTab" prefWidth="205.0" style="-fx-background-color: transparent; -fx-text-fill: #8E8E93; -fx-background-radius: 9; -fx-font-weight: 700; -fx-font-size: 13px; -fx-cursor: hand; -fx-padding: 6 0 6 0;" text="Week" />
+                  <Button fx:id="btnTabMonth" onAction="#handleSelectMonthTab" prefWidth="205.0" style="-fx-background-color: transparent; -fx-text-fill: #8E8E93; -fx-background-radius: 9; -fx-font-weight: 700; -fx-font-size: 13px; -fx-cursor: hand; -fx-padding: 6 0 6 0;" text="Month" />
+                  <Button fx:id="btnTabYear" onAction="#handleSelectYearTab" prefWidth="205.0" style="-fx-background-color: transparent; -fx-text-fill: #8E8E93; -fx-background-radius: 9; -fx-font-weight: 700; -fx-font-size: 13px; -fx-cursor: hand; -fx-padding: 6 0 6 0;" text="Year" />
+               </children>
+            </HBox>
+
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+               <content>
+                  <VBox spacing="16.0" style="-fx-background-color: transparent;">
+                     <children>
+                        <!-- Dynamic Metric Header -->
+                        <VBox spacing="2.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                 <children>
+                                    <Label fx:id="lblSelectedDate" style="-fx-text-fill: #1D1D1F; -fx-font-size: 14px; -fx-font-weight: bold;" text="Mon, 25 May" />
+                                    <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 10px;" text="▼" />
+                                    <HBox HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="lblTimeInterval" style="-fx-text-fill: #8E8E93; -fx-font-size: 12px;" text="00:00–23:59" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="BASELINE_LEFT" spacing="4.0" style="-fx-padding: 6 0 6 0;">
+                                  <children>
+                                     <Label fx:id="lblCurrentSteps" style="-fx-text-fill: #1D1D1F; -fx-font-size: 34px; -fx-font-weight: 800;" text="5,241" />
+                                     <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 16px; -fx-font-weight: 600;" text="steps" />
+                                  </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+
+                        <!-- Tab views pane -->
+                        <StackPane>
+                           <children>
+                              <!-- Day View Pane -->
+                              <HBox fx:id="paneDay" alignment="TOP_LEFT" spacing="16.0">
+                                 <children>
+                                    <!-- Left Column: Steps chart -->
+                                    <VBox spacing="12.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 8, 0, 0, 2);">
+                                             <children>
+                                                <BarChart fx:id="chartDaySteps" alternativeRowFillVisible="false" horizontalGridLinesVisible="true" legendVisible="false" prefHeight="340.0" verticalGridLinesVisible="false">
+                                                   <xAxis><CategoryAxis label="Time of Day" side="BOTTOM" style="-fx-tick-label-fill: #1D1D1F; -fx-font-size: 11px; -fx-font-weight: bold;" tickLabelFill="#1D1D1F" /></xAxis>
+                                                   <yAxis><NumberAxis label="Steps" side="LEFT" style="-fx-tick-label-fill: #1D1D1F; -fx-font-size: 11px; -fx-font-weight: bold;" tickLabelFill="#1D1D1F" /></yAxis>
+                                                </BarChart>
+                                             </children>
+                                          </VBox>
+                                          <VBox fx:id="vboxScaleDetailsDay" spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 8, 0, 0, 2);">
+                                             <children>
+                                                <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 0 0 4 0;" text="Hourly Step Details" />
+                                                <VBox fx:id="vboxScaleDetailsListDay" spacing="8.0" />
+                                             </children>
+                                          </VBox>
+                                          <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 11px; -fx-padding: 4 0 0 4;" text="Data above is calculated based on your step count." />
+                                       </children>
+                                    </VBox>
+
+                                    <!-- Right Column: Goal Progress and inputs -->
+                                    <VBox prefWidth="340.0" spacing="12.0">
+                                       <children>
+                                          <!-- Goal Progress Card -->
+                                          <VBox spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 8, 0, 0, 2);">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT">
+                                                   <children>
+                                                      <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 15px; -fx-font-weight: bold;" text="Goal progress" />
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <Label onMouseClicked="#handleEditStepsGoal" style="-fx-text-fill: #34C759; -fx-font-size: 13px; -fx-cursor: hand;" text="Edit 📝" />
+                                                   </children>
+                                                </HBox>
+                                                
+                                                <HBox alignment="BASELINE_LEFT" spacing="2.0">
+                                                   <children>
+                                                      <Label fx:id="lblStepsGoalFraction" style="-fx-text-fill: #1D1D1F; -fx-font-size: 20px; -fx-font-weight: bold;" text="5,241/10,000 steps" />
+                                                   </children>
+                                                </HBox>
+ 
+                                                <!-- Steps Goal progress bar -->
+                                                <StackPane prefHeight="10.0" style="-fx-background-color: #EEEEF0; -fx-background-radius: 5;">
+                                                   <children>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Rectangle fx:id="rectProgressBar" arcHeight="10" arcWidth="10" fill="#34C759" height="10.0" width="200.0" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </StackPane>
+                                                
+                                                <HBox alignment="CENTER_LEFT">
+                                                   <children>
+                                                      <Label fx:id="lblStepsAway" style="-fx-text-fill: #8E8E93; -fx-font-size: 13px;" text="4,759 steps away" />
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <Button onAction="#handleLogSteps" style="-fx-background-color: #EEEEF0; -fx-text-fill: #34C759; -fx-background-radius: 12; -fx-font-weight: bold; -fx-font-size: 12px; -fx-padding: 4 12 4 12; -fx-cursor: hand;" text="GO" />
+                                                   </children>
+                                                </HBox>
+ 
+                                                <Rectangle fill="#EEEEF0" height="1.0" width="308.0" />
+ 
+                                                <!-- Secondary statistics -->
+                                                <VBox spacing="10.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 13px;" text="Calories" />
+                                                            <HBox HBox.hgrow="ALWAYS" />
+                                                            <Label fx:id="lblCaloriesVal" style="-fx-text-fill: #1D1D1F; -fx-font-size: 14px; -fx-font-weight: bold;" text="155 kcal" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Label fx:id="lblCaloriesEquiv" style="-fx-text-fill: #8E8E93; -fx-font-size: 12px;" text="Equivalent to 1 soft serve" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 13px;" text="Distance" />
+                                                            <HBox HBox.hgrow="ALWAYS" />
+                                                            <Label fx:id="lblDistanceVal" style="-fx-text-fill: #1D1D1F; -fx-font-size: 14px; -fx-font-weight: bold;" text="3.52 km" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                          <Button maxWidth="Infinity" onAction="#handleLogSteps" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 14; -fx-cursor: hand; -fx-border-color: #E5E5EA; -fx-border-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                                              <graphic>
+                                                 <HBox alignment="CENTER" spacing="8.0">
+                                                    <children>
+                                                       <StackPane style="-fx-background-color: linear-gradient(to bottom right, #FF5E5B, #FF2D55); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                          <children>
+                                                             <Label style="-fx-text-fill: white; -fx-font-size: 10px; -fx-font-family: 'Segoe UI Emoji';" text="🏃" />
+                                                          </children>
+                                                       </StackPane>
+                                                       <Label style="-fx-text-fill: #FF2D55; -fx-font-weight: 700; -fx-font-size: 14px;" text="Log a walk / run" />
+                                                    </children>
+                                                 </HBox>
+                                              </graphic>
+                                           </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+ 
+                              <!-- Week View Pane -->
+                              <HBox fx:id="paneWeek" alignment="TOP_LEFT" managed="false" spacing="16.0" visible="false">
+                                 <children>
+                                    <!-- Left Column: Steps chart -->
+                                    <VBox spacing="12.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <!-- Chart Card -->
+                                          <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 8, 0, 0, 2);">
+                                             <children>
+                                                <Label fx:id="lblChartRange" style="-fx-text-fill: #8E8E93; -fx-font-size: 13px;" text="May 24 – 30" />
+                                                
+                                                <!-- Weekly Chart Area -->
+                                                <BarChart fx:id="chartWeeklySteps" alternativeRowFillVisible="false" horizontalGridLinesVisible="true" legendVisible="false" prefHeight="340.0" verticalGridLinesVisible="false">
+                                                   <xAxis><CategoryAxis label="Days of Week" side="BOTTOM" style="-fx-tick-label-fill: #1D1D1F; -fx-font-size: 11px; -fx-font-weight: bold;" tickLabelFill="#1D1D1F" /></xAxis>
+                                                   <yAxis><NumberAxis label="Steps" side="LEFT" style="-fx-tick-label-fill: #1D1D1F; -fx-font-size: 11px; -fx-font-weight: bold;" tickLabelFill="#1D1D1F" /></yAxis>
+                                                </BarChart>
+                                             </children>
+                                          </VBox>
+                                          <VBox fx:id="vboxScaleDetailsWeek" spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 8, 0, 0, 2);">
+                                             <children>
+                                                <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 0 0 4 0;" text="Daily Step Details" />
+                                                <VBox fx:id="vboxScaleDetailsListWeek" spacing="8.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+
+                                    <!-- Right Column: Summary & Actions -->
+                                    <VBox prefWidth="340.0" spacing="12.0">
+                                       <children>
+                                          <!-- Weekly Summary Card -->
+                                          <VBox spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 8, 0, 0, 2);">
+                                             <children>
+                                                <Label style="-fx-text-fill: #1D1D1F; -fx-font-size: 15px; -fx-font-weight: bold;" text="Weekly Summary" />
+                                                
+                                                <HBox alignment="CENTER_LEFT" style="-fx-padding: 4 0 4 0;">
+                                                   <children>
+                                                      <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 13px;" text="Average steps: " />
+                                                      <Label fx:id="lblAverageSteps" style="-fx-text-fill: #1D1D1F; -fx-font-size: 14px; -fx-font-weight: bold;" text="4,980 steps/day" />
+                                                   </children>
+                                                </HBox>
+                                                <Label style="-fx-text-fill: #8E8E93; -fx-font-size: 12px;" text="Daily step goal targets are configured inside the Day View tab." wrapText="true" />
+                                             </children>
+                                          </VBox>
+                                          <Button maxWidth="Infinity" onAction="#handleLogSteps" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 14; -fx-cursor: hand; -fx-border-color: #E5E5EA; -fx-border-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                                              <graphic>
+                                                 <HBox alignment="CENTER" spacing="8.0">
+                                                    <children>
+                                                       <StackPane style="-fx-background-color: linear-gradient(to bottom right, #FF5E5B, #FF2D55); -fx-background-radius: 4; -fx-min-width: 18px; -fx-min-height: 18px; -fx-max-width: 18px; -fx-max-height: 18px;">
+                                                          <children>
+                                                             <Label style="-fx-text-fill: white; -fx-font-size: 10px; -fx-font-family: 'Segoe UI Emoji';" text="ðŸ&#143;ƒ" />
+                                                          </children>
+                                                       </StackPane>
+                                                       <Label style="-fx-text-fill: #FF2D55; -fx-font-weight: 700; -fx-font-size: 14px;" text="Log a walk / run" />
+                                                    </children>
+                                                 </HBox>
+                                              </graphic>
+                                           </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

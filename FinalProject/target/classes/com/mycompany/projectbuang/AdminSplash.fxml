@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Saved inside: src/main/resources/com/mycompany/projectbuang/admin_splash.fxml -->
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane prefHeight="750.0" prefWidth="1150.0" style="-fx-background-color: #1D1D1F; -fx-font-family: '.AppleSystemUIFont', 'SF Pro', sans-serif;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectbuang.AdminSplashController">
+   <children>
+      <VBox alignment="CENTER" spacing="28.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #0071E3; -fx-background-radius: 20; -fx-max-width: 72;">
+               <children>
+                  <Label style="-fx-font-weight: 900; -fx-font-size: 28px; -fx-text-fill: white;" text="A"/>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" spacing="6.0">
+               <children>
+                  <Label fx:id="lblGreeting" style="-fx-font-size: 24px; -fx-font-weight: 700; -fx-text-fill: #FFFFFF; -fx-letter-spacing: -0.5px;" text="Secure Administrative Access Link"/>
+                  <Label style="-fx-font-size: 13px; -fx-text-fill: #86868B;" text="Initializing encrypted telemetry core matrices..."/>
+               </children>
+            </VBox>
+            <ProgressIndicator prefHeight="36.0" prefWidth="36.0" style="-fx-progress-color: #0071E3;"/>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
+    
